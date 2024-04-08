@@ -11,7 +11,7 @@ import {
 import * as bcrypt from 'bcrypt';
 
 @Entity('users')
-export class UsersEntity {
+export class UserEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -45,4 +45,7 @@ export class UsersEntity {
   async hashPassword() {
     this.password = await bcrypt.hash(this.password, 10); // 使用bcrypt对密码进行哈希
   }
+
+  @Column({ default: false })
+  emailVerified: boolean;
 }
