@@ -19,12 +19,11 @@ export class AuthGuard implements CanActivate {
       throw new UnauthorizedException();
     }
     try {
-      const payload = await this.jwtService.verifyAsync(token, {
-        secret: jwtConstants.secret,
-      });
       // 💡 在这里我们将 payload 挂载到请求对象上
       // 以便我们可以在路由处理器中访问它
-      request['user'] = payload;
+      request['user'] = await this.jwtService.verifyAsync(token, {
+        secret: jwtConstants.secret,
+      });
     } catch {
       throw new UnauthorizedException();
     }
