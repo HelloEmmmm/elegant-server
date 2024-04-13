@@ -6,9 +6,11 @@ import {
   UpdateDateColumn,
   BeforeInsert,
   BeforeUpdate,
+  ManyToOne,
 } from 'typeorm';
 
 import * as bcrypt from 'bcrypt';
+import { Blog } from '../../blog/entities/blog.entity';
 
 @Entity('users')
 export class UserEntity {
@@ -48,4 +50,7 @@ export class UserEntity {
 
   @Column({ default: false })
   emailVerified: boolean;
+
+  @ManyToOne(() => Blog, (blog) => blog.author)
+  blogs: any;
 }

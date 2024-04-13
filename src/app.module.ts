@@ -4,8 +4,9 @@ import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UserModule } from './modules/user/user.module';
 import { UserEntity } from './modules/user/entities/user.entity';
-import { AuthModule } from "./modules/auth/auth.module";
+import { AuthModule } from './modules/auth/auth.module';
 import { BlogModule } from './modules/blog/blog.module';
+import { Blog } from './modules/blog/entities/blog.entity';
 
 @Module({
   imports: [
@@ -16,7 +17,7 @@ import { BlogModule } from './modules/blog/blog.module';
       username: 'riches_chiu',
       password: 'Phoenix482642',
       database: 'elegant_database',
-      entities: [UserEntity],
+      entities: [UserEntity, Blog],
       synchronize: true,
     }),
     UserModule,

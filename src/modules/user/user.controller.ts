@@ -12,4 +12,9 @@ export class UserController {
   getAll(): Promise<UserEntity[]> {
     return this.usersService.findAll();
   }
+
+  @Get('noauth')
+  asbdbasd(): string {
+    return '123';
+  }
 }
