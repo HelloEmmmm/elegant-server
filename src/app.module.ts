@@ -2,8 +2,10 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { UsersModule } from './modules/users/users.module';
-import { UsersEntity } from './modules/users/entities/users.entity';
+import { UserModule } from './modules/user/user.module';
+import { UserEntity } from './modules/user/entities/user.entity';
+import { AuthModule } from "./modules/auth/auth.module";
+import { BlogModule } from './modules/blog/blog.module';
 
 @Module({
   imports: [
@@ -14,10 +16,12 @@ import { UsersEntity } from './modules/users/entities/users.entity';
       username: 'riches_chiu',
       password: 'Phoenix482642',
       database: 'elegant_database',
-      entities: [UsersEntity],
+      entities: [UserEntity],
       synchronize: true,
     }),
-    UsersModule,
+    UserModule,
+    AuthModule,
+    BlogModule,
   ],
   controllers: [AppController],
   providers: [AppService],
