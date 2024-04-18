@@ -1,5 +1,3 @@
-// response.interceptor.ts
-
 import {
   Injectable,
   NestInterceptor,
@@ -29,7 +27,7 @@ export class ResponseInterceptor implements NestInterceptor {
           const message = error.message || 'Internal Server Error';
           const statusCode = HttpStatus.INTERNAL_SERVER_ERROR;
           return throwError(
-            new HttpException({ success: false, message }, statusCode),
+            () => new HttpException({ success: false, message }, statusCode),
           );
         }
       }),
